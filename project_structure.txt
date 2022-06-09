@@ -15,6 +15,21 @@ Controllers:
         savePoll: pollForm.ejs (creates or updates, then)
         deletePoll: pollsList.ejs (redirects to pollsList)
 
+Models:
+    polls:
+        id
+        title
+        started
+        finished
+        options (options model)
+    options:
+        id
+        poll id (polls model)
+        description
+        votes
+    poll has many options
+    cascade
+
 Security: TODO (not explicitly asked in for the test)
 user x admin
 
