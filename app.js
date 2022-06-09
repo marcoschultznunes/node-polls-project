@@ -11,8 +11,15 @@ app.use(bodyParser.urlencoded({extended: true}))
 
 app.use(express.static(path.join(__dirname, 'public')))
 
-app.use((req, res) => {
-    res.status(404).render('notFound')
+const pollsRoutes = require('./routes/polls')
+
+app.use('/polls', pollsRoutes)
+
+app.get('/', (req, res) => {  // Main page redirects to polls
+    res.redirect('/polls')
+})
+app.use((req, res) => {  // 404 pages
+    res.status(404).render('notFound')  
 })
 
 module.exports = app

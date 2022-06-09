@@ -1,0 +1,26 @@
+Views
+
+=> List all polls (admin can edit): pollsList.ejs
+=> Poll edit/create form (admin): pollForm.ejs
+=> Poll vote/results page: pollPage.ejs
+
+Controllers:
+    users:
+        listPolls: pollsList.ejs (if admin, can edit/delete poll)
+        readPoll: pollPage.ejs
+        votePoll: pollPage.ejs (saves and updates the results)
+    admin:
+        editPoll: pollForm.ejs
+        newPoll: pollForm.ejs
+        savePoll: pollForm.ejs (creates or updates, then)
+        deletePoll: pollsList.ejs (redirects to pollsList)
+
+Security: TODO (not explicitly asked in for the test)
+user x admin
+
+1 vote per user: TODO
+
+=> Adding 1 vote per user restriction would require implementing authentication and 
+authorization, so i opted not to implement it for the test. However, it could be added by
+creating an users entity, adding signup and login, and saving the polls in which the 
+user voted as an attribute of the user in the database.
