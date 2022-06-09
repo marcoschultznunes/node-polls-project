@@ -1,5 +1,7 @@
-const { Sequelize } = require('sequelize/types');
+const { Sequelize } = require('sequelize');
 const db = require('../db')
+
+const Option = require('./options')
 
 const Poll = db.define('product', {
     id: {
@@ -20,8 +22,11 @@ const Poll = db.define('product', {
         type: Sequelize.DATE,
         allowNull: false
     }
-    
+
     // And a list of options
 });
+
+Option.belongsTo(Poll, {constraints: true, onDelete: 'CASCADE'})
+Poll.hasMany(Option)
 
 module.exports = Poll

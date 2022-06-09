@@ -29,6 +29,7 @@ Models:
         votes
     poll has many options
     cascade
+    validation: min. 3 options
 
 Security: TODO (not explicitly asked in for the test)
 user x admin

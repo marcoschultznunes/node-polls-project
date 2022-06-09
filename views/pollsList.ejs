@@ -7,6 +7,37 @@
     <title>Polls</title>
 </head>
 <body>
-    <h1>Polls List</h1>
+    <main>
+        <% if (!locals.polls || locals.polls.length === 0) { %>
+            <h1>No polls found</h1>
+        <% } else { %>
+            <table>
+                <thead>
+                    <tr>
+                        <td>Id</td>
+                        <td>Title</td>
+                        <td>Start</td>
+                        <td>Deadline</td>
+                        <td>Actions</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% for (let p of polls) { %> 
+                        <tr>
+                            <td><p><%= p.id %></p></td>
+                            <td>
+                                <a href="http:/localhost:3000/polls/view/<%=p.id%>">
+                                    <h3><%= p.title %></h3>
+                                </a>
+                            </td>
+                            <td><p><%= p.started %></p></td>
+                            <td><p><%= p.finished %></p></td>
+                            <td><a href="http:/localhost:3000/polls/edit/<%=p.id%>">Edit</a></td>
+                        </tr>
+                    <% } %>
+                </tbody>
+            </table>
+        <% } %>
+    </main>
 </body>
 </html>

@@ -1,4 +1,4 @@
-const { Sequelize } = require('sequelize/types');
+const { Sequelize } = require('sequelize');
 const db = require('../db')
 
 const Option = db.define('product', {

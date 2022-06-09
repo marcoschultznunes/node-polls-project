@@ -1,7 +1,13 @@
 const express = require('express')
+const Poll = require('../models/polls')
 
-exports.listPolls = (req, res) => {
-    res.render('pollsList')
+exports.listPolls = async (req, res) => {
+    try {
+        const polls = await Poll.findAll()
+        res.render('pollsList', {polls: polls})
+    } catch(err) {
+        res.render('pollsList')
+    }
 }
 exports.readPoll = (req, res) => {
     res.render('pollPage')

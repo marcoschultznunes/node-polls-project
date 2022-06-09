@@ -7,6 +7,49 @@
     <title>Poll Form</title>
 </head>
 <body>
-    <h1>Poll Form</h1>
+    <form action="http:localhost:3000/polls/save/<%=locals.id%>" method="post">
+        <div class="input-container">
+            <label for="title">Title</label>
+            <input 
+                type="text" name="title" placeholder="Title" 
+                value="<%= locals.title %>"
+            />
+        </div>
+        <div class="input-container">
+            <label for="title">Deadline</label>
+            <input type="datetime-local" name="finished" value="<%= locals.finished %>" />
+        </div>
+        <div id="form-options-container">
+            <ol id="form-options-list">
+                <li><input type="text" class="form-poll-option"></li>
+                <li><input type="text" class="form-poll-option"></li>
+                <li><input type="text" class="form-poll-option"></li>
+            </ol>
+            <button id="add-option-btn">+</button>
+        </div>
+        <button type="submit">Save Poll</button>
+    </form>
+    
+<script>
+    const formOptionsList = document.getElementById('form-options-list')
+    const addOptionBtn = document.getElementById('add-option-btn')
+
+    addOptionBtn.addEventListener('click', (e) => {
+        e.preventDefault()
+        const listElement = document.createElement("li")
+        listElement.innerHTML = '<input type="text" class="form-poll-option">'
+        
+        const removeButton = document.createElement("button")
+        removeButton.innerHTML = "x"
+        removeButton.addEventListener('click', (e) => {
+            e.preventDefault()
+            e.target.parentElement.remove()
+        })
+
+        listElement.appendChild(removeButton)
+        formOptionsList.appendChild(listElement)
+    })
+
+</script>
 </body>
 </html>

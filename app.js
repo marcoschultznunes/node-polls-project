@@ -13,9 +13,7 @@ app.use(bodyParser.urlencoded({extended: true}))
 app.use(express.static(path.join(__dirname, 'public')))
 
 const pollsRoutes = require('./routes/polls')
-
 app.use('/polls', pollsRoutes)
-
 app.get('/', (req, res) => {  // Main page redirects to polls
     res.redirect('/polls')
 })

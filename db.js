@@ -5,7 +5,6 @@ const env = require('./env')
 const sequelize = new Sequelize(env.db, env.user, env.password, {
     dialect: "mysql",
     host: "localhost",
-    port: 3000
 })
 
 module.exports = sequelize
