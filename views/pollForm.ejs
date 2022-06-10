@@ -7,6 +7,7 @@
     <title>Poll Form</title>
     <link rel="stylesheet" href="/css/main.css">
     <link rel="stylesheet" href="/css/navbar.css">
+    <link rel="stylesheet" href="/css/poll_form.css">
 </head>
 <body>
     <%- include('includes/navbar.ejs') %>
@@ -26,28 +27,29 @@
             />
         </div>
         <div id="form-options-container">
-            <ol id="form-options-list">
+            <h3>Options</h3>
+            <ul id="form-options-list">
                 <% if (!locals.options) { %> 
-                    <li><input type="text" class="form-poll-option" name="options"></li>
-                    <li><input type="text" class="form-poll-option" name="options"></li>
-                    <li><input type="text" class="form-poll-option" name="options"></li>
+                    <li><input type="text" class="form-poll-option" name="options" placeholder="Option 1"></li>
+                    <li><input type="text" class="form-poll-option" name="options" placeholder="Option 2"></li>
+                    <li><input type="text" class="form-poll-option" name="options" placeholder="Option 3"></li>
                 <% } else { %>
                     <% for(let i=0; i < locals.options.length; i++) { %>
                         <li>
                             <input 
                                 type="text" class="form-poll-option" name="options" 
-                                value="<%= options[i] %>"
+                                value="<%= options[i] %>" placeholder="Option<%= i+1 %>"
                             >
                             <% if(i >= 3) { %>
-                                <button onclick="deleteParent" type="button" class="delete-option-btn">x</button>
+                                <button onclick="deleteParent" type="button" class="delete-option-btn btn">x</button>
                             <% } %>
                         </li>
                     <% } %>
                 <% } %>
-            </ol>
-            <button id="add-option-btn" type="button">+</button>
+            </ul>
+            <button id="add-option-btn" class="btn" type="button">+</button>
         </div>
-        <button type="submit">Save Poll</button>
+        <button id="save-poll-btn" class="btn" type="submit">Save Poll</button>
     </form>
     
 <script>
@@ -69,6 +71,7 @@
         removeButton.innerHTML = "x"
         removeButton.setAttribute('type', 'button')
         removeButton.classList.add('delete-option-btn')
+        removeButton.classList.add('btn')
         removeButton.addEventListener('click', deleteParent)
 
         listElement.appendChild(removeButton)

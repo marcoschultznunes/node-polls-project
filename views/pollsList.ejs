@@ -7,14 +7,15 @@
     <title>Polls</title>
     <link rel="stylesheet" href="/css/main.css">
     <link rel="stylesheet" href="/css/navbar.css">
+    <link rel="stylesheet" href="/css/poll_list.css">
 </head>
 <body>
     <%- include('includes/navbar.ejs') %>
-    <main>
+    <main id="poll-list-container">
         <% if (!locals.polls || locals.polls.length === 0) { %>
             <h1>No polls found</h1>
         <% } else { %>
-            <table>
+            <table id="poll-list-table">
                 <thead>
                     <tr>
                         <td>Id</td>
@@ -29,14 +30,18 @@
                         <tr>
                             <td><p><%= p.id %></p></td>
                             <td>
-                                <a href="/polls/view/<%=p.id%>">
+                                <a href="/polls/view/<%=p.id%>" class="poll-title-link">
                                     <h3><%= p.title %></h3>
                                 </a>
                             </td>
-                            <td><p><%= p.started %></p></td>
-                            <td><p><%= p.finished %></p></td>
-                            <td><a href="/polls/edit/<%=p.id%>">Edit</a></td>
-                            <td><a href="/polls/delete/<%=p.id%>">Del</a></td>
+                            <td><p><%= new Date(p.started).toLocaleString() %></p></td>
+                            <td><p><%= new Date(p.finished).toLocaleString() %></p></td>
+                            <td>
+                                <div class="action-buttons-container">
+                                    <a href="/polls/edit/<%=p.id%>" class="btn edit-btn">Edit</a>
+                                    <a href="/polls/delete/<%=p.id%>" class="btn delete-btn">Del</a>
+                                </div>
+                            </td>
                         </tr>
                     <% } %>
                 </tbody>
