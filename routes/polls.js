@@ -9,7 +9,7 @@ router.post('/vote/:id', pollsController.votePoll)
 
 router.get('/edit/:id', pollsController.editPoll)
 router.get('/new', pollsController.newPoll)
-router.post('/save/:id', pollsController.savePoll)
-router.post('/delete/:id', pollsController.deletePoll)
+router.post('/save/:id?', pollsController.savePoll)
+router.get('/delete/:id', pollsController.deletePoll)
 
 module.exports = router

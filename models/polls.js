@@ -3,7 +3,7 @@ const db = require('../db')
 
 const Option = require('./options')
 
-const Poll = db.define('product', {
+const Poll = db.define('poll', {
     id: {
         type: Sequelize.INTEGER,
         autoIncrement: true,
@@ -27,6 +27,6 @@ const Poll = db.define('product', {
 });
 
 Option.belongsTo(Poll, {constraints: true, onDelete: 'CASCADE'})
-Poll.hasMany(Option)
+Poll.hasMany(Option, {onDelete: 'CASCADE'})
 
 module.exports = Poll

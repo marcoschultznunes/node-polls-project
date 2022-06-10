@@ -1,7 +1,7 @@
 const { Sequelize } = require('sequelize');
 const db = require('../db')
 
-const Option = db.define('product', {
+const Option = db.define('option', {
     id: {
         type: Sequelize.INTEGER,
         autoIncrement: true,
@@ -14,7 +14,8 @@ const Option = db.define('product', {
     },
     votes: {
         type: Sequelize.INTEGER,
-        allowNull: false
+        allowNull: false,
+        defaultValue: 0
     },
     
     // And the poll id
