@@ -11,6 +11,7 @@
 </head>
 <body>
     <%- include('includes/navbar.ejs') %>
+    <%- include('includes/notification.ejs') %>
     <main id="poll-list-container">
         <% if (!locals.polls || locals.polls.length === 0) { %>
             <h1>No polls found</h1>
@@ -48,5 +49,6 @@
             </table>
         <% } %>
     </main>
+    <script src="/js/index.js"></script>
 </body>
 </html>

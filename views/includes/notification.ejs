@@ -1,0 +1,8 @@
+<% if(locals.notification) { %>
+    <div class="notification 
+        <%= notification.type === 'error' ? 'error' : 'success' %>
+    ">
+        <p><%= notification.msg %></p>
+        <button class="btn" id="delete-notification-btn">x</button> 
+    </div>
+<% } %>

@@ -2,6 +2,7 @@ const express = require('express')
 const moment = require('moment')
 const Poll = require('../models/polls')
 const Option = require('../models/options')
+const { type } = require('express/lib/response')
 
 const findPoll = async (id) => {
     const poll = await Poll.findOne({where: {id: id}})
@@ -93,17 +94,35 @@ exports.savePoll = async (req, res) => {
         }
         
     } catch (e) {
-        res.redirect('/')
+        res.render('pollForm', {
+            notification: {
+                msg: "Failed to save poll!",
+                type: "error"
+            }
+        })
     }
 }
+
 exports.deletePoll = async (req, res) => {
     try {
         const {id} = req.params
         await Option.destroy({where: {pollId: id}})
         await Poll.destroy({where: {id: id}})
-    
-        res.redirect('/')
+        const polls = await Poll.findAll()
+
+        res.render('pollsList', {
+            polls: polls,
+            notification: {
+                msg: "Successfully deleted poll of id #" + id,
+                type: "success"
+            }
+        })
     } catch (e) {
-        res.redirect('/')
+        res.render('pollsList', {
+            notification: {
+                msg: "Error: failed to delete poll of id #" + id ,
+                type: "error"
+            }
+        })
     }
 }

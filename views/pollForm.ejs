@@ -11,6 +11,7 @@
 </head>
 <body>
     <%- include('includes/navbar.ejs') %>
+    <%- include('includes/notification.ejs') %>
     <form action="http://localhost:3000/polls/save/<%=locals.id%>" method="post" id="poll-form">
         <div class="input-container">
             <label for="title">Title</label>
@@ -51,16 +52,12 @@
         </div>
         <button id="save-poll-btn" class="btn" type="submit">Save Poll</button>
     </form>
-    
+
+<script src="/js/index.js"></script>
 <script>
     const pollForm = document.getElementById('poll-form')
     const formOptionsList = document.getElementById('form-options-list')
     const addOptionBtn = document.getElementById('add-option-btn')
-    const deleteParent = (e) => {
-        e.preventDefault()
-        console.log(e.target)
-        e.target.parentElement.remove()
-    }
 
     addOptionBtn.addEventListener('click', (e) => {
         e.preventDefault()

@@ -65,7 +65,7 @@
     padding: 5px 10px;
 }
 #save-poll-btn {
-    background-color: #5ea86e;
+    background-color: var(--success-color);
     color: #ffffff;
     font-size: 1.2rem;
     padding: 5px 10px;

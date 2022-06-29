@@ -1,5 +1,5 @@
 .main-navbar {
-    background-color: #4d908e;
+    background-color: var(--primary-color);
     box-shadow: 0 0 2px 0 #000000;
     display: flex;
     font-size: 1.2rem;
@@ -12,11 +12,11 @@
     padding: 15px 15px;
 }
 .main-navbar a:hover {
-    background-color: #396968;
+    background-color: var(--primary-color-dark);
 }
 .main-navbar a[active] {
     color: #F9C74F;
 }
 .main-navbar a[active]:hover {
-    background-color: #4d908e;
+    background-color: var(--primary-color)
 }

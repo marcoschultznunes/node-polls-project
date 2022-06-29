@@ -1,3 +1,10 @@
+:root {
+    --primary-color: #4d908e;
+    --primary-color-dark: #396968;
+    --error-color: #752c2c;
+    --success-color: #5ea86e;
+}
+
 * {
     box-sizing: border-box;
     margin: 0;
@@ -10,10 +17,12 @@ body {
     min-height: 100vh;
 }
 
+/* a */
 a {
     color: #000000;
 }
 
+/* Buttons */
 .btn {
     border: none;
     border-radius: 2px;
@@ -24,4 +33,35 @@ a {
 }
 .btn:active {
     text-shadow: 0 0 2px #ffffff;
+}
+
+/* Notifications */
+.notification {
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 5px 10px;
+    position: fixed;
+    right: 10px;
+    bottom: 10px;
+    width: fit-content;
+}
+.notification button {
+    background-color: transparent;
+    border-radius: 100%;
+    color: #ffffff;
+    padding: 2px 6px;
+    height: 100%;
+    margin-left: 5px;
+}
+.notification button:hover {
+    box-shadow: none;
+    text-shadow: 0 0 10px #ffffff;
+}
+.success {
+    background-color: var(--success-color);
+}
+.error {
+    background-color: var(--error-color);
 }
